@@ -42,7 +42,7 @@ const SortModal = () => {
     try {
       if (settings) {
         const { data } = await axiosInstance.get(
-          `/content-manager/collection-types/${contentTypePath}?sort=rank:asc`
+          `/content-manager/collection-types/${contentTypePath}?sort=rank:asc&pageSize=20`
         );
         if (data.results.length > 0 && !!toString(data.results[0][settings.rank]) && !!data.results[0][settings.title]) {
           setActive(true);
@@ -58,7 +58,7 @@ const SortModal = () => {
   const fetchContentType = async () => {
     try {
       const { data } = await axiosInstance.get(
-        `/content-manager/collection-types/${contentTypePath}?sort=rank:asc`
+        `/content-manager/collection-types/${contentTypePath}?sort=rank:asc&pageSize=20`
       );
       setStatus('success');
       setData(data.results);
